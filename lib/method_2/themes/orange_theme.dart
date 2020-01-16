@@ -9,18 +9,34 @@ class OrangeTheme extends BaseTheme {
   factory OrangeTheme() => _instance;
 
   @override
+  Color get primaryColor => Color(0xFFFF5722);
+
+  @override
+  Color get accentColor => Color(0xFFF57C00);
+
+  @override
   ThemeData get data => ThemeData(
         brightness: Brightness.dark,
-        primaryColor: Colors.teal,
-        accentColor: Colors.orange,
+        primaryColor: primaryColor,
+        accentColor: accentColor,
+        canvasColor: Color(0xFFEEEEEE),
         textTheme: TextTheme(
-          body1: TextStyle(fontSize: 24, color: Colors.orange),
+          headline: TextStyle(
+            fontSize: 18,
+            color: primaryColor,
+            letterSpacing: 2,
+            fontWeight: FontWeight.w900,
+          ),
         ),
       );
 
   @override
-  TextStyle get bigText => TextStyle(fontSize: 22, color: Colors.white);
+  TextStyle get tsHistory => TextStyle(
+        fontSize: 120,
+        color: Color(0xFFBDBDBD).withOpacity(0.3),
+        fontWeight: FontWeight.w700,
+      );
 
   @override
-  Color get buttonBackground => Colors.orange;
+  Color get colorScoreText => Color(0xFF9d4f00);
 }

@@ -9,13 +9,33 @@ class LightTheme extends BaseTheme {
   factory LightTheme() => _instance;
 
   @override
+  Color get primaryColor => Color(0xFF00796B);
+
+  @override
+  Color get accentColor => Color(0xFF00BCD4);
+
+  @override
   ThemeData get data => ThemeData.light().copyWith(
-        accentColor: Colors.black,
+        primaryColor: primaryColor,
+        accentColor: accentColor,
+        canvasColor: Color(0xFFEEEEEE),
+        textTheme: TextTheme(
+          headline: TextStyle(
+            fontSize: 18,
+            color: primaryColor,
+            letterSpacing: 2,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
       );
 
   @override
-  TextStyle get bigText => TextStyle(fontSize: 33, color: Colors.black);
+  TextStyle get tsHistory => TextStyle(
+        fontSize: 120,
+        color: Color(0xFFBDBDBD).withOpacity(0.3),
+        fontWeight: FontWeight.w700,
+      );
 
   @override
-  Color get buttonBackground => const Color(0xffd3d3d3);
+  Color get colorScoreText => Color(0xFF3C786B);
 }

@@ -22,6 +22,9 @@ class AppTheme {
 
   static ThemeData _darkTheme = ThemeData.dark().copyWith(
     accentColor: Colors.white,
+    textTheme: TextTheme(
+      headline: TextStyle(fontSize: 10),
+    ),
   );
 
   static ThemeData _lightTheme = ThemeData.light().copyWith(
@@ -32,6 +35,9 @@ class AppTheme {
     brightness: Brightness.dark,
     primaryColor: Colors.teal,
     accentColor: Colors.orange,
-    textTheme: TextTheme(body1: TextStyle(fontSize: 24, color: Colors.orange)),
+    textTheme: TextTheme(
+      body1: TextStyle(fontSize: 24, color: Colors.orange),
+      headline: TextStyle(fontSize: 100, color: Colors.orange),
+    ),
   );
 }

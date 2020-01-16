@@ -28,18 +28,22 @@ class _PageMainState extends State<PageMain> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text("Merhaba Dünya", style: AppTheme.theme.textTheme.body1),
+            Text("Body1", style: Theme.of(context).textTheme.body1),
+            Text("Header", style: Theme.of(context).textTheme.headline),
+            Text("Subhead", style: Theme.of(context).textTheme.subhead),
+            Text("Title", style: Theme.of(context).textTheme.title),
+            Text("Subtitle", style: Theme.of(context).textTheme.subtitle),
             RaisedButton(
               onPressed: () => themeTapped(SupportedTheme.DARK),
-              child: Text("Dark", style: AppTheme.theme.textTheme.button),
+              child: Text("Dark", style: Theme.of(context).textTheme.button),
             ),
             RaisedButton(
               onPressed: () => themeTapped(SupportedTheme.LIGHT),
-              child: Text("Light", style: AppTheme.theme.textTheme.button),
+              child: Text("Light", style: Theme.of(context).textTheme.button),
             ),
             RaisedButton(
               onPressed: () => themeTapped(SupportedTheme.ORANGE),
-              child: Text("Orange", style: AppTheme.theme.textTheme.button),
+              child: Text("Orange", style: Theme.of(context).textTheme.button),
             ),
           ],
         ),

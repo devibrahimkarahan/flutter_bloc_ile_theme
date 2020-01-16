@@ -151,7 +151,7 @@ class _PageMainState extends State<PageMain> {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Color(0xff662fff).withOpacity(.15),
+            color: Theme.of(context).primaryColor.withOpacity(.15),
             offset: Offset(0, 15),
             blurRadius: 20,
           ),

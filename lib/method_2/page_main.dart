@@ -16,125 +16,132 @@ class _PageMainState extends State<PageMain> {
     final media = MediaQuery.of(context);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-      child: Scaffold(
-        backgroundColor: Theme.of(context).canvasColor,
-        body: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Positioned.fill(
-              top: 100,
-              left: 32,
-              right: 12,
-              child: FittedBox(
-                alignment: Alignment.topCenter,
-                child: Text("History", style: BlocTheme.theme.tsHistory),
+      child: WillPopScope(
+        // ignore: missing_return
+        onWillPop: () async {
+          await SystemChannels.platform.invokeMethod("SystemNavigator.pop");
+        },
+        child: Scaffold(
+          backgroundColor: Theme.of(context).canvasColor,
+          body: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Positioned.fill(
+                top: 100,
+                left: 32,
+                right: 12,
+                child: FittedBox(
+                  alignment: Alignment.topCenter,
+                  child: Text("History", style: BlocTheme.theme.tsHistory),
+                ),
               ),
-            ),
-            Positioned.fill(
-              right: 0,
-              bottom: 0,
-              left: 0,
-              child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: index == 0
-                        ? EdgeInsets.fromLTRB(24, 124, 24, 24)
-                        : EdgeInsets.all(24),
-                    child: Column(
+              Positioned.fill(
+                right: 0,
+                bottom: 0,
+                left: 0,
+                child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: index == 0
+                          ? EdgeInsets.fromLTRB(24, 124, 24, 24)
+                          : EdgeInsets.all(24),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "matchday - no. ${10 - index}".toUpperCase(),
+                            style: Theme.of(context).textTheme.headline,
+                          ),
+                          SizedBox(height: 9),
+                          Column(
+                            children: List<Widget>.generate(
+                              3,
+                              (f) => buildItem(context),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: CustomPaint(
+                  painter: HeaderPainter(Theme.of(context).primaryColor),
+                  child: Container(
+                    padding:
+                        EdgeInsets.only(top: media.padding.top, bottom: 24),
+                    child: Row(
                       children: <Widget>[
-                        Text(
-                          "matchday - no. ${10 - index}".toUpperCase(),
-                          style: Theme.of(context).textTheme.headline,
-                        ),
-                        SizedBox(height: 9),
-                        Column(
-                          children: List<Widget>.generate(
-                            3,
-                            (f) => buildItem(context),
+                        Padding(
+                          padding: EdgeInsets.only(left: 6),
+                          child: IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
+                              Icons.keyboard_backspace,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
+                        Spacer(),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  IconButton(
+                                    onPressed: () {
+                                      BlocProvider.of<BlocTheme>(context)
+                                          .add(SupportedTheme.LIGHT);
+                                    },
+                                    icon: Icon(
+                                      Icons.filter_1,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      BlocProvider.of<BlocTheme>(context)
+                                          .add(SupportedTheme.DARK);
+                                    },
+                                    icon: Icon(
+                                      Icons.filter_2,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      BlocProvider.of<BlocTheme>(context)
+                                          .add(SupportedTheme.ORANGE);
+                                    },
+                                    icon: Icon(
+                                      Icons.filter_3,
+                                      color: Colors.orange,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 24),
                       ],
                     ),
-                  );
-                },
-              ),
-            ),
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: CustomPaint(
-                painter: HeaderPainter(Theme.of(context).primaryColor),
-                child: Container(
-                  padding: EdgeInsets.only(top: media.padding.top, bottom: 24),
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(left: 6),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.keyboard_backspace,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Spacer(),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                IconButton(
-                                  onPressed: () {
-                                    BlocProvider.of<BlocTheme>(context)
-                                        .add(SupportedTheme.LIGHT);
-                                  },
-                                  icon: Icon(
-                                    Icons.filter_1,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    BlocProvider.of<BlocTheme>(context)
-                                        .add(SupportedTheme.DARK);
-                                  },
-                                  icon: Icon(
-                                    Icons.filter_2,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    BlocProvider.of<BlocTheme>(context)
-                                        .add(SupportedTheme.ORANGE);
-                                  },
-                                  icon: Icon(
-                                    Icons.filter_3,
-                                    color: Colors.orange,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 24),
-                    ],
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

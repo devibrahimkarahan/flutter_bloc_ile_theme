@@ -29,8 +29,7 @@ class AppTheme {
     accentColor: Colors.black,
   );
 
-  static ThemeData _orangeTheme = ThemeData(
-    brightness: Brightness.dark,
+  static ThemeData _orangeTheme = ThemeData.dark().copyWith(
     primaryColor: Colors.teal,
     accentColor: Colors.orange,
     textTheme: TextTheme(

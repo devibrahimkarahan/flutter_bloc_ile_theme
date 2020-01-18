@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_ile_theme/method_2/themes/base_theme.dart';
 import 'package:flutter_bloc_ile_theme/method_2/themes/dark_theme.dart';
@@ -17,6 +18,12 @@ class BlocTheme extends Bloc<SupportedTheme, ThemeData> {
   factory BlocTheme() => _instance;
 
   static BaseTheme theme = LightTheme();
+
+  static SystemUiOverlayStyle uiOverlayStyle() =>
+      (theme.data.brightness == Brightness.light
+              ? SystemUiOverlayStyle.light
+              : SystemUiOverlayStyle.dark)
+          .copyWith(statusBarColor: Colors.transparent);
 
   @override
   ThemeData get initialState => theme.data;

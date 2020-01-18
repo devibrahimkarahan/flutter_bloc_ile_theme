@@ -15,7 +15,7 @@ class _PageMainState extends State<PageMain> {
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+      value: BlocTheme.uiOverlayStyle(),
       child: WillPopScope(
         // ignore: missing_return
         onWillPop: () async {
@@ -95,41 +95,37 @@ class _PageMainState extends State<PageMain> {
                             color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: Column(
+                          child: Row(
                             children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  IconButton(
-                                    onPressed: () {
-                                      BlocProvider.of<BlocTheme>(context)
-                                          .add(SupportedTheme.LIGHT);
-                                    },
-                                    icon: Icon(
-                                      Icons.filter_1,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      BlocProvider.of<BlocTheme>(context)
-                                          .add(SupportedTheme.DARK);
-                                    },
-                                    icon: Icon(
-                                      Icons.filter_2,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      BlocProvider.of<BlocTheme>(context)
-                                          .add(SupportedTheme.ORANGE);
-                                    },
-                                    icon: Icon(
-                                      Icons.filter_3,
-                                      color: Colors.orange,
-                                    ),
-                                  ),
-                                ],
+                              IconButton(
+                                onPressed: () {
+                                  BlocProvider.of<BlocTheme>(context)
+                                      .add(SupportedTheme.LIGHT);
+                                },
+                                icon: Icon(
+                                  Icons.filter_1,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  BlocProvider.of<BlocTheme>(context)
+                                      .add(SupportedTheme.DARK);
+                                },
+                                icon: Icon(
+                                  Icons.filter_2,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  BlocProvider.of<BlocTheme>(context)
+                                      .add(SupportedTheme.ORANGE);
+                                },
+                                icon: Icon(
+                                  Icons.filter_3,
+                                  color: Colors.orange,
+                                ),
                               ),
                             ],
                           ),
@@ -231,7 +227,7 @@ class HeaderPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Path path = Path();
     path.lineTo(0, size.height);
-    path.lineTo(size.width * 0.85, 0);
+    path.lineTo(size.width * 0.7, 0);
 
     Path shadowPath = Path();
     shadowPath.lineTo(0, size.height);

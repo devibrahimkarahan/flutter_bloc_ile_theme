@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_ile_theme/method_1/bloc_theme.dart';
-import 'package:flutter_bloc_ile_theme/method_1/page_main.dart';
+import 'package:flutter_bloc_ile_theme/method_2/bloc_theme.dart';
+import 'package:flutter_bloc_ile_theme/method_2/page_main.dart';
 import 'package:flutter_bloc_ile_theme/utils/pref_utils.dart';
 
 class PageSplash extends StatefulWidget {

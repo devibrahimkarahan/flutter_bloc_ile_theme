@@ -10,13 +10,6 @@ import 'package:flutter_bloc_ile_theme/utils/pref_utils.dart';
 enum SupportedTheme { LIGHT, DARK, ORANGE }
 
 class BlocTheme extends Bloc<SupportedTheme, ThemeData> {
-  // ignore: close_sinks
-  static final BlocTheme _instance = BlocTheme._();
-
-  BlocTheme._();
-
-  factory BlocTheme() => _instance;
-
   static BaseTheme theme = LightTheme();
 
   static SystemUiOverlayStyle uiOverlayStyle() =>

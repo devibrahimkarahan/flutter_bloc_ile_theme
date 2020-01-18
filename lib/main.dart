@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_ile_theme/method_1/bloc_theme.dart';
+import 'package:flutter_bloc_ile_theme/method_2/bloc_theme.dart';
 import 'package:flutter_bloc_ile_theme/page_splash.dart';
 
 void main() => runApp(MyApp());

@@ -23,7 +23,7 @@ class AppTheme {
   static ThemeData _darkTheme = ThemeData.dark().copyWith(
     accentColor: Colors.white,
     textTheme: TextTheme(
-      headline: TextStyle(fontSize: 10),
+      headline: TextStyle(fontSize: 24),
     ),
   );
 

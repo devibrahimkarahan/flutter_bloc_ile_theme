@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc_ile_theme/method_1/bloc_theme.dart';
 
 class AppTheme {
-  static ThemeData _currentTheme = _lightTheme;
+  static ThemeData theme = _lightTheme;
 
-  static void changeTheme(SupportedTheme theme) {
-    switch (theme) {
+  static void changeTheme(SupportedTheme sTheme) {
+    switch (sTheme) {
       case SupportedTheme.LIGHT:
-        _currentTheme = _lightTheme;
+        theme = _lightTheme;
         break;
       case SupportedTheme.DARK:
-        _currentTheme = _darkTheme;
+        theme = _darkTheme;
         break;
       case SupportedTheme.ORANGE:
-        _currentTheme = _orangeTheme;
+        theme = _orangeTheme;
         break;
     }
   }
-
-  static ThemeData get theme => _currentTheme;
 
   static ThemeData _darkTheme = ThemeData.dark().copyWith(
     accentColor: Colors.white,
